@@ -3,6 +3,7 @@ module.exports = ( sequelize, DataTypes) => {
         genre: {
             type: DataTypes.STRING,
             allowNull: false,
+            unique: true,
             validate: {
                 notEmpty: {
                   args: [true],
@@ -12,14 +13,9 @@ module.exports = ( sequelize, DataTypes) => {
                   args: [true],
                   msg: "Genre needed",
                 },
-                unique: {
-                    args: [true],
-                    msg: 'Genre already added'
-                },
               },
         },
     };
 
-    const GenreModel = sequelize.define('Genre', schema);
-    return GenreModel;
+    return sequelize.define('Genre', schema);
 };

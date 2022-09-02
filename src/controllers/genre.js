@@ -1,14 +1,14 @@
 const { Genre } = require('../models');
 
 const {
-    getAll,
+    getAllBooks,
     create,
     update,
     getById,
     deleteById,
 } = require('./helpers');
 
-const getGenres = (_, res) => getAll(res, 'genre');
+const getGenres = (_, res) => getAllBooks(res, 'genre');
 
 const createGenre = (req, res) => create(res, 'genre', req.body);
 

@@ -44,6 +44,14 @@ const getAll = async (res, model) => {
   res.status(200).json(itemsWithoutPassword);
 };
 
+const getAllBooks = (res, model) => {
+  const Model = getModel(model);
+
+  return Model.findAll({ include: Book }).then((items) => {
+    res.status(200).json(items);
+  });
+};
+
 const create = async (res, model, item) => {
   const Model = getModel(model);
 
@@ -76,7 +84,7 @@ const update = async (res, model, item, id) => {
 const getById = async (res, model, id) => {
   const Model = getModel(model);
 
-  const options = getOptions(Model);
+  const options = getOptions(model);
 
   const item = await Model.findByPk(id, { ...options });
 
@@ -102,6 +110,7 @@ const deleteById = async (res, model, id) => {
 
 module.exports = {
   getAll,
+  getAllBooks,
   create,
   update,
   getById,

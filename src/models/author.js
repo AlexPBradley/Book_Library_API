@@ -3,6 +3,7 @@ module.exports = ( sequelize, DataTypes) => {
         author: {
             type: DataTypes.STRING,
             allowNull: false,
+            unique: true,
             validate: {
                 notEmpty: {
                   args: [true],
@@ -11,10 +12,6 @@ module.exports = ( sequelize, DataTypes) => {
                 notNull: {
                   args: [true],
                   msg: "Author needed",
-                },
-                unique: {
-                    args: [true],
-                    msg: 'Author already added'
                 },
               },
         },
